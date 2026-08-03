@@ -42,6 +42,7 @@ THIRD_PARTY_APP = []
 PROJECT_APPS = [
     "user",
     'customer',
+    'product',
 ]
 INSTALLED_APPS += THIRD_PARTY_APP + PROJECT_APPS
 
