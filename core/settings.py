@@ -45,6 +45,7 @@ PROJECT_APPS = [
     'product',
     'suppliers',
     'orders',
+    'home',
 ]
 INSTALLED_APPS += THIRD_PARTY_APP + PROJECT_APPS
 

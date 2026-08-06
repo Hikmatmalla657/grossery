@@ -29,7 +29,7 @@ class User(models.Model):
 
     )
 
-    
+
 
 
     # windsurf: refactor wxplain

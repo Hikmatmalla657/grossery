@@ -1,3 +1,28 @@
-from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
 
-# Create your views here.
+from .forms import CustomerForm
+from .models import Customer
+
+
+class CustomerListView(LoginRequiredMixin, ListView):
+    model = Customer
+    context_object_name = 'customers'
+
+
+class CustomerCreateView(LoginRequiredMixin, CreateView):
+    model = Customer
+    form_class = CustomerForm
+    success_url = reverse_lazy('customer-list')
+
+
+class CustomerUpdateView(LoginRequiredMixin, UpdateView):
+    model = Customer
+    form_class = CustomerForm
+    success_url = reverse_lazy('customer-list')
+
+
+class CustomerDeleteView(LoginRequiredMixin, DeleteView):
+    model = Customer
+    success_url = reverse_lazy('customer-list')

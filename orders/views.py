@@ -1,3 +1,22 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.views import View
 
-# Create your views here.
+
+class OrderListView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Order list')
+
+
+class OrderCreateView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Order create')
+
+
+class OrderUpdateView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Order update')
+
+
+class OrderDeleteView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('Order delete')
