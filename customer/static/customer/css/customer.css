@@ -1,0 +1,138 @@
+.app-card,
+.detail-card,
+.customer-card {
+    max-width: 780px;
+    margin: 0 auto 2rem;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+}
+
+.app-form,
+.customer-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.app-form .form-control,
+.customer-form .form-control {
+    border: 1px solid #ced4da;
+    border-radius: 0.65rem;
+    padding: 0.75rem 0.9rem;
+    box-shadow: none;
+}
+
+.app-form .form-control:focus,
+.customer-form .form-control:focus {
+    border-color: #4d7cff;
+    box-shadow: 0 0 0 0.15rem rgba(77, 124, 255, 0.2);
+}
+
+.app-form .btn,
+.customer-form .btn {
+    min-width: 120px;
+}
+
+.section-header,
+.customer-list-header {
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.app-table,
+.customer-table {
+    background: #ffffff;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    box-shadow: 0 0.65rem 1.5rem rgba(18, 38, 63, 0.08);
+}
+
+.app-table thead th,
+.customer-table thead th {
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.92rem;
+}
+
+.app-table tbody tr:hover,
+.customer-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.app-table td,
+.app-table th,
+.customer-table td,
+.customer-table th {
+    vertical-align: middle;
+}
+
+.app-table .btn-sm,
+.customer-table .btn-sm {
+    min-width: 70px;
+}
+
+@media (max-width: 767px) {
+    .app-card,
+    .detail-card,
+    .customer-card,
+    .app-table,
+    .customer-table {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .app-form,
+    .customer-form {
+        gap: 0.85rem;
+    }
+
+    .app-table thead,
+    .customer-table thead {
+        display: none;
+    }
+
+    .app-table,
+    .app-table tbody,
+    .app-table tr,
+    .app-table td,
+    .customer-table,
+    .customer-table tbody,
+    .customer-table tr,
+    .customer-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .app-table tr,
+    .customer-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .app-table td,
+    .customer-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .app-table td::before,
+    .customer-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #495057;
+        margin-right: 0.75rem;
+        flex: 1 1 40%;
+    }
+
+    .app-table td:last-child,
+    .customer-table td:last-child {
+        justify-content: flex-start;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+}
