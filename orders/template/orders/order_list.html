@@ -1,38 +1,64 @@
 {% extends "home/base.html" %}
 
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-3 section-header">
-    <h2>Order List</h2>
-    <a href="{% url 'order-create' %}" class="btn btn-primary">Add Order</a>
-</div>
+<style>
+    .orders-panel { background: #fff; border-radius: 1rem; box-shadow: 0 10px 28px rgba(15, 23, 42, .08); padding: clamp(1.25rem, 3vw, 2rem); }
+    .orders-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+    .orders-header h1 { margin: 0; font-size: 1.7rem; font-weight: 700; color: #172033; }
+    .orders-header p { margin: .2rem 0 0; color: #667085; }
+    .orders-table th { background: #172033; color: #fff; border: 0; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; }
+    .orders-table td, .orders-table th { padding: .9rem 1rem; vertical-align: middle; }
+    .orders-table tbody tr:hover { background: #f8fafc; }
+    .status { display: inline-block; padding: .3rem .6rem; border-radius: 999px; background: #e0ecff; color: #175cd3; font-size: .78rem; font-weight: 700; }
+    .products { max-width: 17rem; color: #475467; font-size: .9rem; }
+    .empty { padding: 3.25rem 1rem; text-align: center; color: #667085; }
+</style>
 
-<table class="table app-table table-striped table-bordered">
-    <thead class="table-dark">
-        <tr>
-            <th>Order ID</th>
-            <th>Customer</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for order in orders %}
-        <tr>
-            <td data-label="Order ID">{{ order.order_id }}</td>
-            <td data-label="Customer">{{ order.customer.name }}</td>
-            <td data-label="Date">{{ order.order_date }}</td>
-            <td data-label="Status">{{ order.status }}</td>
-            <td data-label="Actions">
-                <a href="{% url 'order-update' order.order_id %}" class="btn btn-sm btn-warning">Edit</a>
-                <a href="{% url 'order-delete' order.order_id %}" class="btn btn-sm btn-danger">Delete</a>
-            </td>
-        </tr>
-        {% empty %}
-        <tr>
-            <td colspan="5" class="text-center">No orders found.</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<section class="orders-panel">
+    <div class="orders-header">
+        <div>
+            <h1>Orders</h1>
+            <p>{{ orders|length }} order{{ orders|length|pluralize }} recorded</p>
+        </div>
+        <a class="btn btn-primary" href="{% url 'order-create' %}">+ Create order</a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table orders-table align-middle mb-0">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Products</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in orders %}
+                    <tr>
+                        <td class="fw-semibold">#{{ order.order_id }}</td>
+                        <td>{{ order.customer.name }}</td>
+                        <td>{{ order.order_date|date:"M d, Y" }}</td>
+                        <td><span class="status">{{ order.get_status_display }}</span></td>
+                        <td class="products">
+                            {% for product in order.order_details.all %}
+                                {{ product.name }}{% if not forloop.last %}, {% endif %}
+                            {% empty %}
+                                <span class="text-muted">No products</span>
+                            {% endfor %}
+                        </td>
+                        <td class="text-nowrap">
+                            <a class="btn btn-sm btn-outline-primary" href="{% url 'order-update' order.order_id %}">Edit</a>
+                            <a class="btn btn-sm btn-outline-danger" href="{% url 'order-delete' order.order_id %}">Delete</a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr><td class="empty" colspan="6">No orders yet. Create your first order to get started.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
 {% endblock %}

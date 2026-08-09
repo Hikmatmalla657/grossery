@@ -117,25 +117,24 @@
                 <a href="{% url 'dashboard' %}"
                     class="{% if request.path == '/dashboard/' %}active{% endif %}">Dashboard</a>
             </li>
-            <li>
-                <a href="{% url 'order_list' %}"
-                    class="{% if request.path == '/orders/list/' %}active{% endif %}">Orders</a>
+            <li class="text-center mt-4">
+                <a href="{% url 'order_list' %}" class="btn btn-primary btn-lg">View Orders</a>
             </li>
             <li>
-                <a href="{% url 'suppliers_list' %}"
-                    class="{% if request.path == '/suppliers/list/' %}active{% endif %}">Suppliers</a>
+                <a href="{% url 'supplier-list' %}"
+                    class="{% if request.path == '/suppliers/suppliers/' %}active{% endif %}">Suppliers</a>
             </li>
             <li>
-                <a href="{% url 'products_list' %}"
-                    class="{% if request.path == '/products/list/' %}active{% endif %}">Products</a>
+                <a href="{% url 'product-list' %}"
+                    class="{% if request.path == '/products/products/' %}active{% endif %}">Products</a>
             </li>
             <li>
-                <a href="{% url 'users_list' %}"
-                    class="{% if request.path == '/users/list/' %}active{% endif %}">Users</a>
+                <a href="{% url 'user_list' %}"
+                    class="{% if request.path == '/user/users/' %}active{% endif %}">Users</a>
             </li>
             <li>
-                <a href="{% url 'customers_list' %}"
-                    class="{% if request.path == '/customers/list/' %}active{% endif %}">Customers</a>
+                <a href="{% url 'customer-list' %}"
+                    class="{% if request.path == '/customer/customers/' %}active{% endif %}">Customers</a>
             </li>
         </ul>
     </div>

@@ -1,22 +1,33 @@
-from django.http import HttpResponse
-from django.views import View
+from django.urls import reverse_lazy
+from django.views.generic import CreateView, DeleteView, ListView, UpdateView
+
+from home.mixins import SessionLoginRequiredMixin
+
+from .forms import SupplierForm
+from .models import Supplier
 
 
-class SupplierListView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Supplier list')
+class SupplierListView(SessionLoginRequiredMixin, ListView):
+    model = Supplier
+    template_name = "supplier_list.html"
+    context_object_name = "suppliers"
 
 
-class SupplierCreateView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Supplier create')
+class SupplierCreateView(SessionLoginRequiredMixin, CreateView):
+    model = Supplier
+    form_class = SupplierForm
+    template_name = "add_supplier.html"
+    success_url = reverse_lazy("supplier-list")
 
 
-class SupplierUpdateView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Supplier update')
+class SupplierUpdateView(SessionLoginRequiredMixin, UpdateView):
+    model = Supplier
+    form_class = SupplierForm
+    template_name = "update_supplier.html"
+    success_url = reverse_lazy("supplier-list")
 
 
-class SupplierDeleteView(View):
-    def get(self, request, *args, **kwargs):
-        return HttpResponse('Supplier delete')
+class SupplierDeleteView(SessionLoginRequiredMixin, DeleteView):
+    model = Supplier
+    template_name = "delete_supplier.html"
+    success_url = reverse_lazy("supplier-list")

@@ -1,7 +1,63 @@
-% extends 'home/base.html' %
+{% extends 'home/base.html' %}
 
-% block content %
-<h2 class="text-center my-4">Welcome to the Inventory Management System</h2>
+{% block content %}
+<style>
+    .dashboard-hero {
+        padding: 3rem 0 2rem;
+        background: linear-gradient(135deg, #0d6efd 0%, #6610f2 100%);
+        color: #fff;
+        border-radius: 1rem;
+        box-shadow: 0 20px 40px rgba(13, 110, 253, 0.18);
+        margin-bottom: 2rem;
+    }
+
+    .dashboard-hero h2 {
+        font-size: clamp(2rem, 3.5vw, 3rem);
+        font-weight: 700;
+    }
+
+    .dashboard-summary .card {
+        border-width: 2px;
+        border-radius: 1rem;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .dashboard-summary .card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+    }
+
+    .dashboard-summary .card .card-body {
+        padding: 2rem 1.5rem;
+    }
+
+    .dashboard-summary .card-title {
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+    }
+
+    .dashboard-summary .card-text .h4 {
+        font-size: 2.5rem;
+        font-weight: 700;
+    }
+
+    .dashboard-summary .border-purple {
+        border-color: #6f42c1 !important;
+    }
+
+    .dashboard-summary .text-purple {
+        color: #6f42c1 !important;
+    }
+
+    .dashboard-action {
+        margin-top: 2rem;
+    }
+</style>
+<div class="dashboard-hero text-center">
+    <h2>Welcome to the Inventory Management System</h2>
+</div>
+
+<div class="dashboard-summary row">
 
 
 <h3 class="text-center mb-4">Order Status Summary</h3>
@@ -14,7 +70,7 @@
                 <i class="fa fa-dot-circle-o text-info fa-3x mb-3"></i>
                 <h5 class="card-title">Pending</h5>
                 <p class="card-text">
-                    <span class="h4">{ status_count.pending }</span>
+                    <span class="h4">{{ status_count.pending }}</span>
                 </p>
             </div>
         </div>
@@ -28,7 +84,7 @@
                 <i class="fa fa-dot-circle-o text-warning fa-3x mb-3"></i>
                 <h5 class="card-title">Processing</h5>
                 <p class="card-text">
-                    <span class="h4">{ status_count.processing }</span>
+                    <span class="h4">{{ status_count.processing }}</span>
                 </p>
             </div>
         </div>
@@ -41,7 +97,7 @@
                 <i class="fa fa-dot-circle-o text-purple fa-3x mb-3"></i>
                 <h5 class="card-title">Shipped</h5>
                 <p class="card-text">
-                    <span class="h4">{ status_count.shipped }</span>
+                    <span class="h4">{{ status_count.shipped }}</span>
                 </p>
             </div>
         </div>
@@ -54,7 +110,7 @@
                 <i class="fa fa-dot-circle-o text-success fa-3x mb-3"></i>
                 <h5 class="card-title">Delivered</h5>
                 <p class="card-text">
-                    <span class="h4">{ status_count.delivered }</span>
+                    <span class="h4">{{ status_count.delivered }}</span>
                 </p>
             </div>
         </div>
@@ -67,7 +123,7 @@
                 <i class="fa fa-dot-circle-o text-danger fa-3x mb-3"></i>
                 <h5 class="card-title">Cancelled</h5>
                 <p class="card-text">
-                    <span class="h4">{ status_count.cancelled }</span>
+                    <span class="h4">{{ status_count.cancelled }}</span>
                 </p>
             </div>
         </div>

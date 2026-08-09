@@ -1,34 +1,35 @@
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from .models import User
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView, DetailView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from home.mixins import SessionLoginRequiredMixin
 from .forms import Userform
 
 
 
-class UserListView(LoginRequiredMixin, ListView):
+class UserListView(SessionLoginRequiredMixin, ListView):
     model = User
-    template_name = 'user/user_list.html'
+    template_name = 'user_list.html'
     context_object_name = 'users'
 
-class UserCreateView(LoginRequiredMixin, CreateView):
+class UserCreateView(SessionLoginRequiredMixin, CreateView):
     model = User
     form_class = Userform
-    template_name = 'user/user_form.html'
-    success_url = '/users/'
+    template_name = 'add_user.html'
+    success_url = reverse_lazy('user_list')
 
-class UserUpdateView(LoginRequiredMixin, UpdateView):
+class UserUpdateView(SessionLoginRequiredMixin, UpdateView):
     model = User
     form_class = Userform
-   # template_name = 'user/user_form.html'
-    success_url = '/users/'
+    template_name = 'update_user.html'
+    success_url = reverse_lazy('user_list')
 
-class UserDeleteView(LoginRequiredMixin, DeleteView):
+class UserDeleteView(SessionLoginRequiredMixin, DeleteView):
     model = User
-    template_name = 'user/user_confirm_delete.html'
-    success_url = '/users/'
+    template_name = 'delete_user.html'
+    success_url = reverse_lazy('user_list')
 
-class UserDetailView(LoginRequiredMixin, DetailView):
+class UserDetailView(SessionLoginRequiredMixin, DetailView):
     model = User
     template_name = 'user/user_detail.html'
     context_object_name = 'user'

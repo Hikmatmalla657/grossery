@@ -15,12 +15,38 @@
     gap: 1rem;
 }
 
+.app-form p {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    color: #495057;
+    font-weight: 500;
+}
+
 .app-form .form-control,
 .customer-form .form-control {
     border: 1px solid #ced4da;
     border-radius: 0.65rem;
     padding: 0.75rem 0.9rem;
     box-shadow: none;
+}
+
+.app-form input,
+.app-form select,
+.app-form textarea {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 0.65rem;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+}
+
+.app-form input:focus,
+.app-form select:focus,
+.app-form textarea:focus {
+    outline: 0;
+    border-color: #4d7cff;
+    box-shadow: 0 0 0 0.15rem rgba(77, 124, 255, 0.2);
 }
 
 .app-form .form-control:focus,

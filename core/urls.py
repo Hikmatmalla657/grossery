@@ -23,7 +23,10 @@ urlpatterns = [
     path('customer/', include('customer.urls')),
     path('orders/', include('orders.urls')),
     path('products/', include('product.urls')),
-    path('suppliers/', include('suppliers.urls'))
+    path('suppliers/', include('suppliers.urls')),
+    path('home/', include('home.urls')),
+    # Allow access to home app URLs at the project root (e.g. /dashboard/)
+    path('', include('home.urls')),
     
 ]
 
