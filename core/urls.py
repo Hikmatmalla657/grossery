@@ -30,6 +30,10 @@ urlpatterns = [
     
     #api urls
     path('api/v1/', include('orders.api.urls')),
+    path('api/v1/', include('customer.api.urls')),
+    path('api/v1/', include('product.api.urls')),
+    path('api/v1/', include('suppliers.api.urls')),
+    path('api/v1/', include('user.api.urls')),
 
     
 ]
