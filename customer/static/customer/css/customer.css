@@ -162,3 +162,122 @@
         flex-wrap: wrap;
     }
 }
+
+.supplier-card {
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+}
+
+.supplier-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.supplier-form p {
+    display: grid;
+    gap: 0.4rem;
+    margin: 0;
+    color: #495057;
+    font-weight: 500;
+}
+
+.supplier-form input,
+.supplier-form select,
+.supplier-form textarea {
+    width: 100%;
+    border: 1px solid #ced4da;
+    border-radius: 0.65rem;
+    padding: 0.75rem 0.9rem;
+    font: inherit;
+}
+
+.supplier-form input:focus,
+.supplier-form select:focus,
+.supplier-form textarea:focus {
+    outline: 0;
+    border-color: #4d7cff;
+    box-shadow: 0 0 0 0.15rem rgba(77, 124, 255, 0.2);
+}
+
+.supplier-list-header {
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.supplier-table {
+    background: #ffffff;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    box-shadow: 0 0.65rem 1.5rem rgba(18, 38, 63, 0.08);
+}
+
+.supplier-table thead th {
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 0.92rem;
+}
+
+.supplier-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.supplier-table td,
+.supplier-table th {
+    vertical-align: middle;
+}
+
+.supplier-table .btn-sm {
+    min-width: 70px;
+}
+
+@media (max-width: 767px) {
+    .supplier-card,
+    .supplier-table {
+        width: 100%;
+        box-shadow: none;
+    }
+
+    .supplier-table thead {
+        display: none;
+    }
+
+    .supplier-table,
+    .supplier-table tbody,
+    .supplier-table tr,
+    .supplier-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .supplier-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.75rem;
+        padding: 0.75rem;
+    }
+
+    .supplier-table td {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.65rem 0.75rem;
+    }
+
+    .supplier-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #495057;
+        margin-right: 0.75rem;
+        flex: 1 1 40%;
+    }
+
+    .supplier-table td:last-child {
+        justify-content: flex-start;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+    }
+}

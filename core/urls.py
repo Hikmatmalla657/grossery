@@ -28,5 +28,9 @@ urlpatterns = [
     # Allow access to home app URLs at the project root (e.g. /dashboard/)
     path('', include('home.urls')),
     
+    #api urls
+    path('api/v1/', include('orders.api.urls')),
+
+    
 ]
 
